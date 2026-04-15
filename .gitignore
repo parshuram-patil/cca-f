@@ -1,0 +1,55 @@
+# ── Secrets ───────────────────────────────
+.env
+
+# ── Python ────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# ── Virtual environments ──────────────────
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# ── Distribution / packaging ──────────────
+dist/
+build/
+*.egg-info/
+*.egg
+.eggs/
+wheels/
+
+# ── Testing & coverage ────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ── Type checkers ─────────────────────────
+.mypy_cache/
+.pytype/
+.ruff_cache/
+
+# ── Jupyter ───────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── IDEs ──────────────────────────────────
+.idea/
+.vscode/
+*.iml
+
+# ── macOS ─────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── Logs & temp ───────────────────────────
+*.log
+*.tmp
+*.swp
+
