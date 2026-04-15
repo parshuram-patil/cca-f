@@ -10,7 +10,7 @@ import os
 import sys
 from typing import List
 import anthropic
-from anthropic.types import MessageParam, ToolParam
+from anthropic.types import MessageParam, ToolParam, OutputConfigParam
 from dotenv import load_dotenv
 
 # Load .env from the project root (silently ignores missing file)
@@ -139,6 +139,93 @@ def structured_output():
     data  = json.loads(match.group() if match else raw)
     print(json.dumps(data, indent=2))
 
+# ─────────────────────────────────────────
+# 5. Structured JSON output - Stop sequences
+# ─────────────────────────────────────────
+
+def structured_stop_seq_output():
+    print("\n── 5. Structured JSON output ─────────────")
+
+    import json
+
+    json_messages: List[MessageParam] = [
+        {
+            "role"   : "user",
+            "content": (
+                "AWS EC2 Instance state change notification"
+            )
+        },
+        {
+            "role": "assistant",
+            "content": "```json"
+        }
+    ]
+    response = client.messages.create(
+        model      = MODEL,
+        max_tokens = 256,
+        messages   = json_messages,
+        stop_sequences=["```"],
+    )
+
+    raw = response.content[0].text.strip()
+    data = json.loads(raw)
+    print(json.dumps(data, indent=2))
+
+# ─────────────────────────────────────────
+# 5. Structured JSON output - Json Schema + Output Config
+# ─────────────────────────────────────────
+
+def structured_jsonschema_output():
+    print("\n── 5. Structured JSON Schema + Output Config output ─────────────")
+
+    import json
+
+    schema = {
+        "type": "array",
+        "required": ["answer", "confidence"],
+        "properties": {
+            "answer": {"type": "string"},
+            "confidence": {"type": "number", "description": "0.0 to 1.0"}
+        },
+        "additionalProperties": False
+    }
+
+    output_config: OutputConfigParam = {
+        "format": {
+            "type": "json_schema",
+            "schema": schema
+        },
+        # "effort": "medium"
+    }
+
+    json_messages: List[MessageParam] = [
+        {
+            "role"   : "user",
+            "content": (
+                """
+                What is the capital of following Countries?
+                1. India
+                2. Uzbekistan 
+                3. Netherlands
+                4. Pune
+                5. Mars
+                6. Uttar Pradesh
+                """
+
+            )
+        }
+    ]
+    response = client.messages.create(
+        model      = MODEL,
+        max_tokens = 256,
+        messages   = json_messages,
+        system="You are a helpful assistant that answers questions about country capitals. Respond with ONLY the JSON array as specified in the output config — no markdown, no code fences, no explanation.",
+        output_config=output_config
+    )
+
+    raw = response.content[0].text.strip()
+    data = json.loads(raw)
+    print(json.dumps(data, indent=2))
 
 # ─────────────────────────────────────────
 # 6. Simple chat loop (interactive)
@@ -274,13 +361,16 @@ if __name__ == "__main__":
     print("  Claude API — Python Samples")
     print("=" * 50)
 
-    basic_message()
-    system_prompt()
-    multi_turn()
-    streaming()
-    structured_output()
-    tool_use()
-    token_usage()
+    # basic_message()
+    # system_prompt()
+    # multi_turn()
+    # streaming()
+
+    # structured_output()
+    # structured_stop_seq_output()
+    structured_jsonschema_output()
+    # tool_use()
+    # token_usage()
 
     # Uncomment to launch the interactive chat:
     # chat_loop()
