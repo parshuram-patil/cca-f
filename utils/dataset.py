@@ -20,6 +20,7 @@ def generate_dataset() -> list[dict]:
       {
         "task": "Description of task",
         "format": "python" or "json" or "regex"
+        "solution_criteria": "Key criteria for evaluating the solution.
       },
       ...additional
     ]

@@ -38,6 +38,7 @@ def run_test_case(test_case: dict) -> dict:
     reasoning   = model_grade["reasoning"]
 
     syntax_score = grade_syntax(output, test_case)
+
     score = (model_score + syntax_score) / 2
 
     return {
