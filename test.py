@@ -8,7 +8,9 @@ Auth    : copy .env → .env and set ANTHROPIC_API_KEY
 
 import os
 import sys
+from typing import List
 import anthropic
+from anthropic.types import MessageParam, ToolParam
 from dotenv import load_dotenv
 
 # Load .env from the project root (silently ignores missing file)
@@ -48,13 +50,14 @@ def basic_message():
 def system_prompt():
     print("\n── 2. System prompt ──────────────────────")
 
+    messages: List[MessageParam] = [
+        {"role": "user", "content": "What is the weather like today?"}
+    ]
     response = client.messages.create(
         model      = MODEL,
         max_tokens = 256,
         system     = "You are a pirate. Always respond in pirate speak.",
-        messages   = [
-            {"role": "user", "content": "What is the weather like today?"}
-        ]
+        messages   = messages,
     )
 
     print(response.content[0].text)
@@ -67,7 +70,7 @@ def system_prompt():
 def multi_turn():
     print("\n── 3. Multi-turn conversation ────────────")
 
-    messages = [
+    messages: List[MessageParam] = [
         {"role": "user",      "content": "My name is Priya."},
         {"role": "assistant", "content": "Nice to meet you, Priya!"},
         {"role": "user",      "content": "What is my name?"},
@@ -89,12 +92,13 @@ def multi_turn():
 def streaming():
     print("\n── 4. Streaming ──────────────────────────")
 
+    stream_messages: List[MessageParam] = [
+        {"role": "user", "content": "Count from 1 to 10 slowly."}
+    ]
     with client.messages.stream(
         model      = MODEL,
         max_tokens = 256,
-        messages   = [
-            {"role": "user", "content": "Count from 1 to 10 slowly."}
-        ]
+        messages   = stream_messages,
     ) as stream:
         for text in stream.text_stream:
             print(text, end="", flush=True)
@@ -111,26 +115,27 @@ def structured_output():
 
     import json, re
 
+    json_messages: List[MessageParam] = [
+        {
+            "role"   : "user",
+            "content": (
+                "Extract the person details from this text:\n\n"
+                "John Doe is 32 years old and lives in Mumbai. "
+                "His email is john@example.com.\n\n"
+                "Return a JSON object with keys: name, age, city, email."
+            )
+        }
+    ]
     response = client.messages.create(
         model      = MODEL,
         max_tokens = 256,
         system     = "You are a JSON extractor. Respond with ONLY valid JSON — no markdown, no code fences, no explanation.",
-        messages   = [
-            {
-                "role"   : "user",
-                "content": (
-                    "Extract the person details from this text:\n\n"
-                    "John Doe is 32 years old and lives in Mumbai. "
-                    "His email is john@example.com.\n\n"
-                    "Return a JSON object with keys: name, age, city, email."
-                )
-            }
-        ]
+        messages   = json_messages,
     )
 
     raw = response.content[0].text.strip()
     # Strip markdown code fences if the model added them anyway
-    match = re.search(r'\{.*\}', raw, re.DOTALL)
+    match = re.search(r'\{.*}', raw, re.DOTALL)
     data  = json.loads(match.group() if match else raw)
     print(json.dumps(data, indent=2))
 
@@ -142,7 +147,7 @@ def structured_output():
 def chat_loop():
     print("\n── 6. Interactive chat (type 'quit' to exit) ──")
 
-    history = []
+    history: List[MessageParam] = []
 
     while True:
         user_input = input("\nYou: ").strip()
@@ -177,7 +182,7 @@ def tool_use():
     import json
 
     # Define the tool
-    tools = [
+    tools: List[ToolParam] = [
         {
             "name"       : "get_weather",
             "description": "Get the current weather for a city",
@@ -195,13 +200,14 @@ def tool_use():
     ]
 
     # First call — Claude decides to use the tool
+    first_messages: List[MessageParam] = [
+        {"role": "user", "content": "What is the weather in Tokyo?"}
+    ]
     response = client.messages.create(
         model      = MODEL,
         max_tokens = 256,
         tools      = tools,
-        messages   = [
-            {"role": "user", "content": "What is the weather in Tokyo?"}
-        ]
+        messages   = first_messages,
     )
 
     tool_use_block = next(b for b in response.content if b.type == "tool_use")
@@ -213,24 +219,25 @@ def tool_use():
     print(f"Tool returned: {weather_result}")
 
     # Second call — give Claude the tool result
+    second_messages: List[MessageParam] = [
+        {"role": "user",      "content": "What is the weather in Tokyo?"},
+        {"role": "assistant", "content": response.content},
+        {
+            "role"   : "user",
+            "content": [
+                {
+                    "type"       : "tool_result",
+                    "tool_use_id": tool_use_block.id,
+                    "content"    : json.dumps(weather_result),
+                }
+            ]
+        }
+    ]
     response2 = client.messages.create(
         model      = MODEL,
         max_tokens = 256,
         tools      = tools,
-        messages   = [
-            {"role": "user",      "content": "What is the weather in Tokyo?"},
-            {"role": "assistant", "content": response.content},
-            {
-                "role"   : "user",
-                "content": [
-                    {
-                        "type"       : "tool_result",
-                        "tool_use_id": tool_use_block.id,
-                        "content"    : json.dumps(weather_result),
-                    }
-                ]
-            }
-        ]
+        messages   = second_messages,
     )
 
     print(f"Claude: {response2.content[0].text}")
@@ -243,12 +250,13 @@ def tool_use():
 def token_usage():
     print("\n── 8. Token usage ────────────────────────")
 
+    haiku_messages: List[MessageParam] = [
+        {"role": "user", "content": "Write a haiku about coding."}
+    ]
     response = client.messages.create(
         model      = MODEL,
         max_tokens = 128,
-        messages   = [
-            {"role": "user", "content": "Write a haiku about coding."}
-        ]
+        messages   = haiku_messages,
     )
 
     print(response.content[0].text)
@@ -271,7 +279,6 @@ if __name__ == "__main__":
     multi_turn()
     streaming()
     structured_output()
-    chat_loop()
     tool_use()
     token_usage()
 
