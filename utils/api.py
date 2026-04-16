@@ -63,6 +63,38 @@ def chat(
         _print_token_usage(response)
     return response
 
+def chat_stream(
+    messages,
+    model = DEFAULT_MODEL,
+    system=None,
+    temperature=1.0,
+    stop_sequences=[],
+    tools=None,
+    tool_choice=None,
+    betas=[],
+):
+    params = {
+        "model": model,
+        "max_tokens": 1000,
+        "messages": messages,
+        "temperature": temperature,
+        "stop_sequences": stop_sequences,
+    }
+
+    if tool_choice:
+        params["tool_choice"] = tool_choice
+
+    if tools:
+        params["tools"] = tools
+
+    if system:
+        params["system"] = system
+
+    if betas:
+        params["betas"] = betas
+
+    return client.beta.messages.stream(**params)
+
 # ── Extract text content from a Message ───────────────────────────────────────────────────────────────
 def text_from_message(message):
     return "\n".join(

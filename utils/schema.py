@@ -91,3 +91,34 @@ batch_tool_schema = {
         "required": ["invocations"],
     },
 }
+
+save_article_schema : ToolParam = (
+    {
+        "name": "save_article",
+        "description": "Saves a scholarly journal article",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "abstract": {
+                    "type": "string",
+                    "description": "Abstract of the article. One short sentence max",
+                },
+                "meta": {
+                    "type": "object",
+                    "properties": {
+                        "word_count": {
+                            "type": "integer",
+                            "description": "Word count",
+                        },
+                        "review": {
+                            "type": "string",
+                            "description": "One sentence review of the paper",
+                        },
+                    },
+                    "required": ["word_count", "review"],
+                },
+            },
+            "required": ["abstract", "meta"],
+        },
+    }
+)

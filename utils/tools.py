@@ -56,3 +56,6 @@ def add_duration_to_datetime(
 
 def set_reminder(content, timestamp):
     print(f"----\nSetting the following reminder for {timestamp}:\n\t{content}\n----")
+
+def save_article(**kwargs):
+    return "Article saved!"
