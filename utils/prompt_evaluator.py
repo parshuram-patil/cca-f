@@ -88,13 +88,13 @@ class PromptEvaluator:
             }),
         )
         add_assistant_message(messages, "```json")
-        text = chat(
+        response = chat(
             messages,
             system="You are a test scenario designer specialized in creating diverse, unique testing scenarios.",
             stop_sequences=["```"],
             temperature=1.0,
         )
-        return json.loads(text)
+        return json.loads(response.content[0].text)
 
     def generate_test_case(
         self,
@@ -155,14 +155,14 @@ class PromptEvaluator:
             }),
         )
         add_assistant_message(messages, "```json")
-        text = chat(
+        response = chat(
             messages,
             system="You are a test case creator specializing in designing evaluation scenarios.",
             stop_sequences=["```"],
             temperature=0.7,
         )
 
-        test_case = json.loads(text)
+        test_case = json.loads(response.content[0].text)
         test_case["task_description"] = task_description
         test_case["scenario"] = idea
         return test_case
@@ -291,8 +291,8 @@ class PromptEvaluator:
             }),
         )
         add_assistant_message(messages, "```json")
-        eval_text = chat(messages, stop_sequences=["```"], temperature=0.0)
-        return json.loads(eval_text)
+        response = chat(messages, stop_sequences=["```"], temperature=0.0)
+        return json.loads(response.content[0].text)
 
     # ── Single test case ──────────────────────────────────────────────────────
 

@@ -39,7 +39,11 @@ def chat(
     temperature: float = 1.0,
     stop_sequences: list[str] | None = None,
     tools: list[ToolParam] | None = None,
-) -> str:
+) -> anthropic.types.Message:
+    """
+    Send messages to Claude and return the complete response object.
+    Caller can access: response.content, response.stop_reason, response.usage, etc.
+    """
     params: dict = {
         "model": model,
         "max_tokens": 1000,
@@ -55,7 +59,7 @@ def chat(
 
     response = client.messages.create(**params)
     _print_token_usage(response)
-    return response.content[0].text
+    return response
 
 
 # ── Token usage ───────────────────────────────────────────────────────────────

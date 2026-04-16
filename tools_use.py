@@ -33,12 +33,7 @@ if __name__ == "__main__":
     messages: list = []
 
     add_user_message(messages, "What is the exact time, formatted as HH:MM:SS?")
-    response = client.messages.create(
-            model=model,
-            max_tokens=1000,
-            messages=messages,
-            tools=[get_current_datetime_schema],
-    )
+    response = chat(messages, model=model, tools=[get_current_datetime_schema])
     add_assistant_message(messages, response)
     print(messages)
 

@@ -35,8 +35,8 @@ def generate_dataset() -> list[dict]:
     messages: list = []
     add_user_message(messages, prompt)
     add_assistant_message(messages, "```json")
-    text = chat(messages, stop_sequences=["```"])
-    return json.loads(text)
+    response = chat(messages, stop_sequences=["```"])
+    return json.loads(response.content[0].text)
 
 
 # ── Persist ───────────────────────────────────────────────────────────────────

@@ -15,7 +15,7 @@ load_dotenv()
 if not os.getenv("ANTHROPIC_API_KEY"):
     sys.exit("❌  ANTHROPIC_API_KEY not set. Add it to your .env file.")
 
-from utils.api import chat, add_user_message, add_assistant_message
+from utils.api import chat, add_user_message
 from utils.prompt_evaluator import PromptEvaluator
 
 # ── Configuration ─────────────────────────────────────────────────────────────
@@ -61,7 +61,8 @@ def run_prompt(prompt_inputs: dict) -> str:
 
     messages: list = []
     add_user_message(messages, prompt)
-    return chat(messages)
+    response = chat(messages)
+    return response.content[0].text
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
