@@ -1,11 +1,9 @@
-import json
 import os
 import sys
-import anthropic
 
 from dotenv import load_dotenv
 
-from utils.api import add_user_message, add_assistant_message, chat, client
+from utils.api import add_user_message, add_assistant_message, chat, text_from_message
 from utils.schema import get_current_datetime_schema
 from utils.tools import get_current_datetime
 
@@ -28,14 +26,41 @@ def execute_tool(tool_name: str, tool_input: dict) -> str:
     else:
         return f"Unknown tool: {tool_name}"
 
-
-if __name__ == "__main__":
+def single_tool_call():
     messages: list = []
 
     add_user_message(messages, "What is the exact time, formatted as HH:MM:SS?")
     response = chat(messages, model=model, tools=[get_current_datetime_schema])
     add_assistant_message(messages, response)
-    print(messages)
+
+    block = response.content[0]
+    tool_name = block.name
+    tool_input = block.input
+    tool_use_id = block.id
+
+    print(f"Tool called: {tool_name}")
+    print(f"Tool input: {tool_input}")
+
+    tool_result = execute_tool(tool_name, tool_input)
+    print(f"Tool result: {tool_result}\n")
+
+    # Add tool result as a properly formatted message block
+    messages.append({
+        "role": "user",
+        "content": [
+            {
+                "type": "tool_result",
+                "tool_use_id": tool_use_id,
+                "content": tool_result,
+            }
+        ]
+    })
+
+    response = chat(messages, model=model)
+    print(text_from_message(response))
+
+if __name__ == "__main__":
+    single_tool_call()
 
 
 

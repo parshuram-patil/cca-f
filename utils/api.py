@@ -61,6 +61,11 @@ def chat(
     _print_token_usage(response)
     return response
 
+# ── Extract text content from a Message ───────────────────────────────────────────────────────────────
+def text_from_message(message):
+    return "\n".join(
+        [block.text for block in message.content if block.type == "text"]
+    )
 
 # ── Token usage ───────────────────────────────────────────────────────────────
 
