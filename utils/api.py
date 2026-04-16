@@ -39,6 +39,7 @@ def chat(
     temperature: float = 1.0,
     stop_sequences: list[str] | None = None,
     tools: list[ToolParam] | None = None,
+    should_print_token_usage: bool = True,
 ) -> anthropic.types.Message:
     """
     Send messages to Claude and return the complete response object.
@@ -58,7 +59,8 @@ def chat(
         params["tools"] = tools
 
     response = client.messages.create(**params)
-    _print_token_usage(response)
+    if should_print_token_usage:
+        _print_token_usage(response)
     return response
 
 # ── Extract text content from a Message ───────────────────────────────────────────────────────────────

@@ -4,8 +4,8 @@ import sys
 from dotenv import load_dotenv
 
 from utils.api import add_user_message, add_assistant_message, chat, text_from_message
-from utils.schema import get_current_datetime_schema
-from utils.tools import get_current_datetime
+from utils.schema import get_current_datetime_schema, add_duration_to_datetime_schema, set_reminder_schema
+from utils.tools import get_current_datetime, add_duration_to_datetime, set_reminder
 
 load_dotenv()
 
@@ -20,9 +20,12 @@ model = os.getenv("ANTHROPIC_MODEL", "claude-opus-4-1-20250805")
 def execute_tool(tool_name: str, tool_input: dict) -> str:
     """Execute a tool and return the result as a string."""
     if tool_name == "get_current_datetime":
-        return get_current_datetime(
-            date_format=tool_input.get("date_format", "%Y-%m-%d %H:%M:%S")
-        )
+        return get_current_datetime(**tool_input)
+    if tool_name == "add_duration_to_datetime":
+        return add_duration_to_datetime(**tool_input)
+    if tool_name == "set_reminder":
+        return set_reminder(**tool_input)
+
     else:
         return f"Unknown tool: {tool_name}"
 
@@ -88,10 +91,21 @@ def run_tools(message):
 
 def run_conversation():
     messages: list = []
-    add_user_message(messages, "What is the exact time, formatted as HH:MM:SS? Also, what is the current time in SS format?")
+    add_user_message(
+        messages,
+        "Set a reminder of my doctor appointment. Its after 179 days from today at 10am."
+    )
 
     while True:
-        response = chat(messages, tools=[get_current_datetime_schema])
+        response = chat(
+            messages,
+            tools=[
+                get_current_datetime_schema,
+                add_duration_to_datetime_schema,
+                set_reminder_schema
+            ],
+            should_print_token_usage=False,
+        )
         add_assistant_message(messages, response)
         print(text_from_message(response))
 
