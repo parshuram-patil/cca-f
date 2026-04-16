@@ -3,7 +3,11 @@ Low-level Anthropic API helpers.
 """
 
 import anthropic
+from anthropic.types import Message, ToolParam
 import os
+
+from dotenv import load_dotenv
+load_dotenv()
 
 client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
@@ -12,12 +16,18 @@ DEFAULT_MODEL = "claude-haiku-4-5"
 
 # ── Message builders ──────────────────────────────────────────────────────────
 
-def add_user_message(messages: list, text: str) -> None:
-    messages.append({"role": "user", "content": text})
+def add_user_message(messages: list, message: str | Message) -> None:
+    messages.append({
+        "role": "user",
+        "content": message.content if isinstance(message, Message) else message
+    })
 
 
-def add_assistant_message(messages: list, text: str) -> None:
-    messages.append({"role": "assistant", "content": text})
+def add_assistant_message(messages: list, message: str | Message) -> None:
+    messages.append({
+        "role": "assistant",
+        "content": message.content if isinstance(message, Message) else message
+    })
 
 
 # ── Chat ──────────────────────────────────────────────────────────────────────
@@ -28,6 +38,7 @@ def chat(
     system: str | None = None,
     temperature: float = 1.0,
     stop_sequences: list[str] | None = None,
+    tools: list[ToolParam] | None = None,
 ) -> str:
     params: dict = {
         "model": model,
@@ -39,6 +50,8 @@ def chat(
         params["system"] = system
     if stop_sequences:
         params["stop_sequences"] = stop_sequences
+    if tools:
+        params["tools"] = tools
 
     response = client.messages.create(**params)
     _print_token_usage(response)
