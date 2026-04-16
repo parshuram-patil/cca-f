@@ -112,7 +112,7 @@ save_article_schema : ToolParam = (
                         },
                         "review": {
                             "type": "string",
-                            "description": "One sentence review of the paper",
+                            "description": "5 sentence review of the paper",
                         },
                     },
                     "required": ["word_count", "review"],

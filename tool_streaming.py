@@ -88,6 +88,6 @@ if __name__ == "__main__":
     run_conversation(
         messages,
         tools=[save_article_schema],
-        # fine_grained=True,
+        fine_grained=True,
         tool_choice={"type": "tool", "name": "save_article"},
     )
