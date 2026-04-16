@@ -16,14 +16,14 @@ DEFAULT_MODEL = "claude-haiku-4-5"
 
 # ── Message builders ──────────────────────────────────────────────────────────
 
-def add_user_message(messages: list, message: str | Message) -> None:
+def add_user_message(messages: list, message) -> None:
     messages.append({
         "role": "user",
         "content": message.content if isinstance(message, Message) else message
     })
 
 
-def add_assistant_message(messages: list, message: str | Message) -> None:
+def add_assistant_message(messages: list, message) -> None:
     messages.append({
         "role": "assistant",
         "content": message.content if isinstance(message, Message) else message

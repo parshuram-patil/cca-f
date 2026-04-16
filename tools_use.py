@@ -59,55 +59,51 @@ def single_tool_call():
     response = chat(messages, model=model)
     print(text_from_message(response))
 
+
+def run_tools(message):
+    tool_requests = [
+        block for block in message.content if block.type == "tool_use"
+    ]
+    tool_result_blocks = []
+
+    for tool_request in tool_requests:
+        try:
+            tool_result = execute_tool(tool_request.name, tool_request.input)
+            tool_result_blocks.append({
+                "type": "tool_result",
+                "tool_use_id": tool_request.id,
+                "content": tool_result,
+                "is_error": False,
+             })
+        except Exception as ex:
+            tool_result_blocks.append({
+                "type": "tool_result",
+                "tool_use_id": tool_request.id,
+                "content": f"Error executing tool {tool_request.name}: {str(ex)}",
+                "is_error": True,
+            })
+
+    return tool_result_blocks
+
+
+def run_conversation():
+    messages: list = []
+    add_user_message(messages, "What is the exact time, formatted as HH:MM:SS? Also, what is the current time in SS format?")
+
+    while True:
+        response = chat(messages, tools=[get_current_datetime_schema])
+        add_assistant_message(messages, response)
+        print(text_from_message(response))
+
+        if response.stop_reason != "tool_use":
+            break
+
+        tool_results = run_tools(response)
+
+        add_user_message(messages, tool_results)
+
+    return messages
+
 if __name__ == "__main__":
-    single_tool_call()
-
-
-
-    # # Add assistant's response to messages
-    # messages.append({"role": "assistant", "content": response.content})
-    #
-    # # ── Check for tool use ────────────────────────────────────────────────────
-    #
-    # if response.stop_reason == "tool_use":
-    #
-    #     # Find and execute the tool
-    #     for block in response.content:
-    #         if block.type == "tool_use":
-    #             tool_name = block.name
-    #             tool_input = block.input
-    #             tool_use_id = block.id
-    #
-    #             print(f"Tool called: {tool_name}")
-    #             print(f"Tool input: {tool_input}")
-    #
-    #             # Execute the tool
-    #             tool_result = execute_tool(tool_name, tool_input)
-    #             print(f"Tool result: {tool_result}\n")
-    #
-    #             # Add tool result to messages
-    #             messages.append({
-    #                 "role": "user",
-    #                 "content": [
-    #                     {
-    #                         "type": "tool_result",
-    #                         "tool_use_id": tool_use_id,
-    #                         "content": tool_result,
-    #                     }
-    #                 ]
-    #             })
-    #
-    #     # ── Second call with tool result ──────────────────────────────────────
-    #
-    #     print("Sending tool result back to Claude...\n")
-    #     final_response = client.messages.create(
-    #         model=model,
-    #         max_tokens=1000,
-    #         messages=messages,
-    #         tools=[get_current_datetime_schema],
-    #     )
-    #
-    #     print(f"Final response stop reason: {final_response.stop_reason}")
-    #     print(f"Final response:\n{final_response.content[0].text}")
-    # else:
-    #     print("No tool use in response")
+    # single_tool_call()
+    run_conversation()
