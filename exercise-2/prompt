@@ -1,0 +1,36 @@
+As a specialised Claude architect, I want you to design and implement below given exercise.
+Always follow best practices by Anthropic/Calude and refer official documentation for your reference.
+Identify specific Claude feature you used in implementation and cite the documentation reference along with implementation reference at the end in tabular format
+
+
+Exercise 2: Build a Structured Data Extraction Pipeline
+
+Objective: Practice designing JSON schemas, using tool_use for structured output,
+implementing validation-retry loops, and designing batch processing strategies.
+
+Steps:
+1. Define an extraction tool with a JSON schema containing required and optional fields, an
+enum with an "other" + detail string pattern, and nullable fields for information that may
+not exist in source documents. Process documents where some fields are absent and
+verify the model returns null rather than fabricating values.
+
+2. Implement a validation-retry loop: when Pydantic or JSON schema validation fails, send a
+follow-up request including the document, the failed extraction, and the specific
+validation error. Track which errors are resolvable via retry (format mismatches) versus
+which are not (information absent from source).
+
+3. Add few-shot examples demonstrating extraction from documents with varied formats
+(e.g., inline citations vs bibliographies, narrative descriptions vs structured tables) and
+verify improved handling of structural variety.
+
+4. Design a batch processing strategy: submit a batch of 100 documents using the Message
+Batches API, handle failures by custom_id, resubmit failed documents with modifications
+(e.g., chunking oversized documents), and calculate total processing time relative to SLA
+constraints.
+
+5. Implement a human review routing strategy: have the model output field-level confidence
+scores, route low-confidence extractions to human review, and analyze accuracy by
+document type and field to verify consistent performance.
+
+Domains reinforced: Domain 4 (Prompt Engineering & Structured Output), Domain 5 (Context
+Management & Reliability)

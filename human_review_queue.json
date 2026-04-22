@@ -1,0 +1,42 @@
+[
+  {
+    "doc_id": "low_conf_doc",
+    "low_conf_fields": [
+      "title",
+      "authors",
+      "publication_year",
+      "document_type",
+      "abstract",
+      "keywords",
+      "doi",
+      "journal_or_venue"
+    ],
+    "confidence": {
+      "title": 0.5,
+      "authors": 0.4,
+      "publication_year": 0.3,
+      "document_type": 0.6,
+      "abstract": 0.3,
+      "keywords": 0.2,
+      "doi": 0.2,
+      "journal_or_venue": 0.2
+    },
+    "document_type": "preprint",
+    "extraction": {},
+    "attempts": 1,
+    "errors": []
+  },
+  {
+    "doc_id": "failed_doc",
+    "low_conf_fields": [
+      "EXTRACTION_FAILED"
+    ],
+    "confidence": {},
+    "document_type": null,
+    "extraction": {},
+    "attempts": 3,
+    "errors": [
+      "No tool_use block"
+    ]
+  }
+]

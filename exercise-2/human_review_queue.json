@@ -1,0 +1,595 @@
+[
+  {
+    "doc_id": "doc_biblio_no_abstract",
+    "low_conf_fields": [
+      "abstract",
+      "keywords",
+      "doi"
+    ],
+    "confidence": {
+      "title": 0.99,
+      "authors": 0.97,
+      "publication_year": 0.99,
+      "document_type": 0.95,
+      "abstract": 0.1,
+      "keywords": 0.1,
+      "doi": 0.1,
+      "journal_or_venue": 0.99
+    },
+    "document_type": "conference_paper",
+    "extraction": {
+      "title": "Attention is all you need",
+      "authors": [
+        {
+          "name": "A. Vaswani",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "N. Shazeer",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "N. Parmar",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "J. Uszkoreit",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "L. Jones",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "A. N. Gomez",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "L. Kaiser",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "I. Polosukhin",
+          "affiliation": null,
+          "email": null
+        }
+      ],
+      "document_type": "conference_paper",
+      "document_type_detail": null,
+      "publication_year": 2017,
+      "abstract": null,
+      "keywords": null,
+      "doi": null,
+      "journal_or_venue": "Advances in Neural Information Processing Systems",
+      "volume": "30",
+      "issue": null,
+      "pages": "5998\u20136008",
+      "url": null,
+      "confidence": {
+        "title": 0.99,
+        "authors": 0.97,
+        "publication_year": 0.99,
+        "document_type": 0.95,
+        "abstract": 0.1,
+        "keywords": 0.1,
+        "doi": 0.1,
+        "journal_or_venue": 0.99
+      }
+    },
+    "attempts": 1,
+    "errors": []
+  },
+  {
+    "doc_id": "doc_missing_year_doi",
+    "low_conf_fields": [
+      "publication_year",
+      "keywords",
+      "doi",
+      "journal_or_venue"
+    ],
+    "confidence": {
+      "title": 0.99,
+      "authors": 0.95,
+      "publication_year": 0.1,
+      "document_type": 0.8,
+      "abstract": 0.95,
+      "keywords": 0.1,
+      "doi": 0.1,
+      "journal_or_venue": 0.1
+    },
+    "document_type": "other",
+    "extraction": {
+      "title": "An Introduction to Quantum Computing for Software Engineers",
+      "authors": [
+        {
+          "name": "Maria Santos",
+          "affiliation": "Institute of Advanced Computing",
+          "email": null
+        },
+        {
+          "name": "Raj Patel",
+          "affiliation": "Institute of Advanced Computing",
+          "email": null
+        }
+      ],
+      "document_type": "other",
+      "document_type_detail": "Internal technical primer",
+      "publication_year": null,
+      "abstract": "This technical primer introduces quantum computing concepts relevant to software engineers, covering qubits, superposition, entanglement, and quantum gates.",
+      "keywords": null,
+      "doi": null,
+      "journal_or_venue": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "url": null,
+      "confidence": {
+        "title": 0.99,
+        "authors": 0.95,
+        "publication_year": 0.1,
+        "document_type": 0.8,
+        "abstract": 0.95,
+        "keywords": 0.1,
+        "doi": 0.1,
+        "journal_or_venue": 0.1
+      }
+    },
+    "attempts": 1,
+    "errors": []
+  },
+  {
+    "doc_id": "doc_other_type",
+    "low_conf_fields": [
+      "keywords",
+      "doi",
+      "journal_or_venue"
+    ],
+    "confidence": {
+      "title": 0.95,
+      "authors": 0.99,
+      "publication_year": 0.9,
+      "document_type": 0.95,
+      "abstract": 0.95,
+      "keywords": 0.1,
+      "doi": 0.1,
+      "journal_or_venue": 0.1
+    },
+    "document_type": "other",
+    "extraction": {
+      "title": "Red-teaming Results for Production LLM System Q3 2024",
+      "authors": [],
+      "document_type": "other",
+      "document_type_detail": "Internal memorandum",
+      "publication_year": 2024,
+      "abstract": "This memo summarises findings from a three-week red-teaming exercise conducted on the production LLM inference system. Key vulnerabilities identified include prompt injection vectors (severity: high) and context window manipulation (severity: medium). Recommended mitigations are outlined in Section 4.",
+      "keywords": null,
+      "doi": null,
+      "journal_or_venue": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "url": null,
+      "confidence": {
+        "title": 0.95,
+        "authors": 0.99,
+        "publication_year": 0.9,
+        "document_type": 0.95,
+        "abstract": 0.95,
+        "keywords": 0.1,
+        "doi": 0.1,
+        "journal_or_venue": 0.1
+      }
+    },
+    "attempts": 1,
+    "errors": []
+  },
+  {
+    "doc_id": "doc_table_format",
+    "low_conf_fields": [
+      "abstract",
+      "keywords"
+    ],
+    "confidence": {
+      "title": 0.99,
+      "authors": 0.97,
+      "publication_year": 0.99,
+      "document_type": 0.98,
+      "abstract": 0.1,
+      "keywords": 0.1,
+      "doi": 0.99,
+      "journal_or_venue": 0.99
+    },
+    "document_type": "journal_article",
+    "extraction": {
+      "title": "ImageNet Large Scale Visual Recognition Challenge",
+      "authors": [
+        {
+          "name": "Olga Russakovsky",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Jia Deng",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Hao Su",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Jonathan Krause",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Sanjeev Satheesh",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Sean Ma",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Zhiheng Huang",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Andrej Karpathy",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Aditya Khosla",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Michael Bernstein",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Alexander Berg",
+          "affiliation": null,
+          "email": null
+        },
+        {
+          "name": "Li Fei-Fei",
+          "affiliation": null,
+          "email": null
+        }
+      ],
+      "document_type": "journal_article",
+      "document_type_detail": null,
+      "publication_year": 2015,
+      "abstract": null,
+      "keywords": null,
+      "doi": "10.1007/s11263-015-0816-y",
+      "journal_or_venue": "International Journal of Computer Vision",
+      "volume": "115",
+      "issue": "3",
+      "pages": "211\u2013252",
+      "url": null,
+      "confidence": {
+        "title": 0.99,
+        "authors": 0.97,
+        "publication_year": 0.99,
+        "document_type": 0.98,
+        "abstract": 0.1,
+        "keywords": 0.1,
+        "doi": 0.99,
+        "journal_or_venue": 0.99
+      }
+    },
+    "attempts": 1,
+    "errors": []
+  },
+  {
+    "doc_id": "doc_preprint_no_doi",
+    "low_conf_fields": [
+      "keywords"
+    ],
+    "confidence": {
+      "title": 0.99,
+      "authors": 0.95,
+      "publication_year": 0.99,
+      "document_type": 0.98,
+      "abstract": 0.99,
+      "keywords": 0.1,
+      "doi": 0.95,
+      "journal_or_venue": 0.98
+    },
+    "document_type": "preprint",
+    "extraction": {
+      "title": "Constitutional AI: Harmlessness from AI Feedback",
+      "authors": [
+        {
+          "name": "Yuntao Bai",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Saurav Kadavath",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Sandipan Kundu",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Amanda Askell",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Jackson Kernion",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Andy Jones",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Anna Chen",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Anna Goldie",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Azalia Mirhoseini",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Cameron McKinnon",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Carol Chen",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Catherine Olsson",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Christopher Olah",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Danny Hernandez",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Dawn Drain",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Deep Ganguli",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Dustin Li",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Eli Tran-Johnson",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Ethan Perez",
+          "affiliation": "Anthropic",
+          "email": null
+        },
+        {
+          "name": "Jamie Kerr",
+          "affiliation": "Anthropic",
+          "email": null
+        }
+      ],
+      "document_type": "preprint",
+      "document_type_detail": null,
+      "publication_year": 2022,
+      "abstract": "As AI systems become more capable, we would like to enlist their help to supervise other AIs. We experiment with methods for training a harmless AI assistant through self-improvement, without any human labels identifying harmful outputs.",
+      "keywords": null,
+      "doi": null,
+      "journal_or_venue": "arXiv",
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "url": null,
+      "confidence": {
+        "title": 0.99,
+        "authors": 0.95,
+        "publication_year": 0.99,
+        "document_type": 0.98,
+        "abstract": 0.99,
+        "keywords": 0.1,
+        "doi": 0.95,
+        "journal_or_venue": 0.98
+      }
+    },
+    "attempts": 1,
+    "errors": []
+  },
+  {
+    "doc_id": "doc_thesis",
+    "low_conf_fields": [
+      "keywords",
+      "doi"
+    ],
+    "confidence": {
+      "title": 0.99,
+      "authors": 0.98,
+      "publication_year": 0.99,
+      "document_type": 0.99,
+      "abstract": 0.99,
+      "keywords": 0.1,
+      "doi": 0.1,
+      "journal_or_venue": 0.95
+    },
+    "document_type": "thesis",
+    "extraction": {
+      "title": "Reinforcement Learning from Human Feedback: Theory and Applications",
+      "authors": [
+        {
+          "name": "Alexandra Kim",
+          "affiliation": "Department of Computer Science, Stanford University",
+          "email": null
+        }
+      ],
+      "document_type": "thesis",
+      "document_type_detail": null,
+      "publication_year": 2023,
+      "abstract": "This thesis examines the theoretical foundations of Reinforcement Learning from Human Feedback (RLHF) and presents three novel applications to language model alignment. We provide convergence guarantees under mild assumptions and demonstrate empirical effectiveness on two benchmark suites.",
+      "keywords": null,
+      "doi": null,
+      "journal_or_venue": "Stanford University",
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "url": null,
+      "confidence": {
+        "title": 0.99,
+        "authors": 0.98,
+        "publication_year": 0.99,
+        "document_type": 0.99,
+        "abstract": 0.99,
+        "keywords": 0.1,
+        "doi": 0.1,
+        "journal_or_venue": 0.95
+      }
+    },
+    "attempts": 1,
+    "errors": []
+  },
+  {
+    "doc_id": "doc_no_title_no_authors",
+    "low_conf_fields": [
+      "title",
+      "publication_year",
+      "document_type",
+      "keywords",
+      "doi",
+      "journal_or_venue"
+    ],
+    "confidence": {
+      "title": 0.3,
+      "authors": 0.99,
+      "publication_year": 0.1,
+      "document_type": 0.5,
+      "abstract": 0.95,
+      "keywords": 0.1,
+      "doi": 0.1,
+      "journal_or_venue": 0.1
+    },
+    "document_type": "other",
+    "extraction": {
+      "title": "<UNKNOWN>",
+      "authors": [],
+      "document_type": "other",
+      "document_type_detail": "Academic paper (unknown publication status)",
+      "publication_year": null,
+      "abstract": "This paper explores the relationship between batch size and generalisation in deep learning. Experiments were conducted on CIFAR-10 and ImageNet. Results suggest that smaller batch sizes implicitly regularise the model.",
+      "keywords": null,
+      "doi": null,
+      "journal_or_venue": null,
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "url": null,
+      "confidence": {
+        "title": 0.3,
+        "authors": 0.99,
+        "publication_year": 0.1,
+        "document_type": 0.5,
+        "abstract": 0.95,
+        "keywords": 0.1,
+        "doi": 0.1,
+        "journal_or_venue": 0.1
+      }
+    },
+    "attempts": 1,
+    "errors": []
+  },
+  {
+    "doc_id": "doc_tricky_doi",
+    "low_conf_fields": [
+      "keywords",
+      "doi"
+    ],
+    "confidence": {
+      "title": 0.95,
+      "authors": 0.75,
+      "publication_year": 0.95,
+      "document_type": 0.9,
+      "abstract": 0.95,
+      "keywords": 0.1,
+      "doi": 0.1,
+      "journal_or_venue": 0.95
+    },
+    "document_type": "conference_paper",
+    "extraction": {
+      "title": "Deep Residual Learning",
+      "authors": [
+        {
+          "name": "He et al.",
+          "affiliation": "Microsoft Research",
+          "email": null
+        }
+      ],
+      "document_type": "conference_paper",
+      "document_type_detail": null,
+      "publication_year": 2015,
+      "abstract": "We present a residual learning framework to ease training of deep networks.",
+      "keywords": null,
+      "doi": null,
+      "journal_or_venue": "CVPR 2015",
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "url": null,
+      "confidence": {
+        "title": 0.95,
+        "authors": 0.75,
+        "publication_year": 0.95,
+        "document_type": 0.9,
+        "abstract": 0.95,
+        "keywords": 0.1,
+        "doi": 0.1,
+        "journal_or_venue": 0.95
+      }
+    },
+    "attempts": 1,
+    "errors": []
+  }
+]
