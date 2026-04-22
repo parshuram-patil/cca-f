@@ -1,0 +1,202 @@
+{
+  "report": {
+    "title": "Enterprise AI Adoption Rates and Productivity Impact in 2024: Synthesis Report",
+    "summary": "This synthesis covers enterprise AI adoption statistics, productivity projections, key risks, and strategic recommendations for 2024. Findings indicate moderate-to-high AI adoption among Fortune 500 companies with projected efficiency gains of 18-25% within 18 months. Three primary risk categories are identified: data privacy (high priority), model hallucination (medium-high), and regulatory non-compliance (medium). Strategic recommendations emphasize multi-vendor approaches with open-weight model fallbacks and implementation of RLHF fine-tuning, retrieval-augmented generation, and human-in-the-loop review processes. Significant coverage gaps exist due to incomplete web search data, limiting external validation of adoption rates and investment figures.",
+    "established_findings": [
+      {
+        "claim": "Enterprise peers are investing heavily in LLM-based automation with projected 18-25% efficiency gains achievable within 18 months",
+        "evidence_excerpt": "Our competitive analysis shows peers are investing heavily in LLM-based automation. ROI models suggest 18\u201325% efficiency gains are achievable within 18 months.",
+        "source_url_or_doc": "internal_ai_strategy_memo_Q1_2024.pdf",
+        "publication_date": "2024-02-20",
+        "confidence": 0.85,
+        "finding_type": "established"
+      },
+      {
+        "claim": "Vendor lock-in with proprietary model APIs represents a key risk in enterprise AI adoption",
+        "evidence_excerpt": "Key risk: vendor lock-in with proprietary model APIs. Recommended action: adopt multi-vendor strategy with open-weight fallbacks.",
+        "source_url_or_doc": "internal_ai_strategy_memo_Q1_2024.pdf",
+        "publication_date": "2024-02-20",
+        "confidence": 0.9,
+        "finding_type": "established"
+      },
+      {
+        "claim": "Multi-vendor strategy with open-weight model fallbacks is recommended to mitigate vendor lock-in risks",
+        "evidence_excerpt": "Recommended action: adopt multi-vendor strategy with open-weight fallbacks.",
+        "source_url_or_doc": "internal_ai_strategy_memo_Q1_2024.pdf",
+        "publication_date": "2024-02-20",
+        "confidence": 0.95,
+        "finding_type": "established"
+      },
+      {
+        "claim": "Data privacy is classified as a high-priority risk in enterprise AI adoption for 2024",
+        "evidence_excerpt": "Primary risks identified: data privacy (high), model hallucination (medium-high), regulatory non-compliance (medium).",
+        "source_url_or_doc": "ai_risk_assessment_2024.pdf",
+        "publication_date": "2024-01-10",
+        "confidence": 0.95,
+        "finding_type": "established"
+      },
+      {
+        "claim": "Model hallucination poses a medium-high risk to enterprise AI deployments",
+        "evidence_excerpt": "Primary risks identified: data privacy (high), model hallucination (medium-high), regulatory non-compliance (medium).",
+        "source_url_or_doc": "ai_risk_assessment_2024.pdf",
+        "publication_date": "2024-01-10",
+        "confidence": 0.9,
+        "finding_type": "established"
+      },
+      {
+        "claim": "Regulatory non-compliance is identified as a medium-level risk for enterprise AI initiatives",
+        "evidence_excerpt": "Primary risks identified: data privacy (high), model hallucination (medium-high), regulatory non-compliance (medium).",
+        "source_url_or_doc": "ai_risk_assessment_2024.pdf",
+        "publication_date": "2024-01-10",
+        "confidence": 0.9,
+        "finding_type": "established"
+      },
+      {
+        "claim": "RLHF fine-tuning, retrieval-augmented generation, and human-in-the-loop review are recommended mitigation strategies for AI risks",
+        "evidence_excerpt": "Mitigation strategies include RLHF fine-tuning, retrieval-augmented generation, and human-in-the-loop review for high-stakes decisions.",
+        "source_url_or_doc": "ai_risk_assessment_2024.pdf",
+        "publication_date": "2024-01-10",
+        "confidence": 0.95,
+        "finding_type": "established"
+      }
+    ],
+    "contested_findings": [
+      {
+        "claim": "Global AI adoption among Fortune 500 companies was estimated at 72% by Q1 2024",
+        "evidence_excerpt": "According to TechReport's 2024 survey of 5,000 enterprises, global AI adoption reached 72% of Fortune 500 companies by Q",
+        "source_url_or_doc": "https://techreport.example.com/ai-adoption-2024",
+        "publication_date": "2024-03-15",
+        "confidence": 0.7,
+        "finding_type": "contested"
+      }
+    ],
+    "coverage_gaps": [
+      "Web search incomplete due to timeout - only 1 partial result obtained for external validation of adoption statistics",
+      "Limited external sources for investment figures and spending data on enterprise AI in 2024",
+      "Insufficient comparative industry-wide productivity metrics beyond internal competitive analysis",
+      "Missing independent third-party validation of 18-25% efficiency gain projections",
+      "Lack of geographic or sector-specific breakdown of AI adoption rates",
+      "Absence of cost-benefit analysis data from multiple enterprise case studies",
+      "Limited data on actual 2024 AI implementation timelines and deployment success rates"
+    ],
+    "sources_used": [
+      "https://techreport.example.com/ai-adoption-2024",
+      "internal_ai_strategy_memo_Q1_2024.pdf",
+      "ai_risk_assessment_2024.pdf"
+    ],
+    "generated_at": "2024-12-28T10:30:00Z"
+  },
+  "latency": {
+    "parallel_secs": 9.813,
+    "sequential_secs": 10.592,
+    "improvement_secs": 0.779,
+    "speedup_factor": 1.08
+  },
+  "subagent_results": [
+    {
+      "agent_id": "ws-001",
+      "agent_type": "web_search",
+      "query": "Enterprise AI adoption rates and productivity impact in 2024: statistics, investment figures, risks, and strategic recommendations",
+      "findings": [
+        {
+          "claim": "Global AI adoption among Fortune 500 companies was estimated at 72% by Q1 2024",
+          "evidence_excerpt": "According to TechReport's 2024 survey of 5,000 enterprises, global AI adoption reached 72% of Fortune 500 companies by Q",
+          "source_url_or_doc": "https://techreport.example.com/ai-adoption-2024",
+          "publication_date": "2024-03-15",
+          "confidence": 0.7,
+          "finding_type": "contested"
+        }
+      ],
+      "metadata": {},
+      "success": false,
+      "error": {
+        "failure_type": "timeout",
+        "attempted_query": "Enterprise AI adoption rates and productivity impact in 2024: statistics, investment figures, risks, and strategic recommendations",
+        "partial_results": [
+          {
+            "claim": "Global AI adoption among Fortune 500 companies was estimated at 72% by Q1 2024",
+            "evidence_excerpt": "According to TechReport's 2024 survey of 5,000 enterprises, global AI adoption reached 72% of Fortune 500 companies by Q",
+            "source_url_or_doc": "https://techreport.example.com/ai-adoption-2024",
+            "publication_date": "2024-03-15",
+            "confidence": 0.7,
+            "finding_type": "contested"
+          }
+        ],
+        "error_message": "Web search subagent timed out after 0.0s. Only 1 of 2 sources processed.",
+        "timestamp": "2026-04-22T06:10:35.030282+00:00"
+      }
+    },
+    {
+      "agent_id": "da-001",
+      "agent_type": "document_analysis",
+      "query": "Enterprise AI adoption rates and productivity impact in 2024: statistics, investment figures, risks, and strategic recommendations",
+      "findings": [
+        {
+          "claim": "Enterprise peers are investing heavily in LLM-based automation with projected 18-25% efficiency gains achievable within 18 months",
+          "evidence_excerpt": "Our competitive analysis shows peers are investing heavily in LLM-based automation. ROI models suggest 18\u201325% efficiency gains are achievable within 18 months.",
+          "source_url_or_doc": "internal_ai_strategy_memo_Q1_2024.pdf",
+          "publication_date": "2024-02-20",
+          "confidence": 0.85,
+          "finding_type": "established"
+        },
+        {
+          "claim": "Vendor lock-in with proprietary model APIs represents a key risk in enterprise AI adoption",
+          "evidence_excerpt": "Key risk: vendor lock-in with proprietary model APIs. Recommended action: adopt multi-vendor strategy with open-weight fallbacks.",
+          "source_url_or_doc": "internal_ai_strategy_memo_Q1_2024.pdf",
+          "publication_date": "2024-02-20",
+          "confidence": 0.9,
+          "finding_type": "established"
+        },
+        {
+          "claim": "Multi-vendor strategy with open-weight model fallbacks is recommended to mitigate vendor lock-in risks",
+          "evidence_excerpt": "Recommended action: adopt multi-vendor strategy with open-weight fallbacks.",
+          "source_url_or_doc": "internal_ai_strategy_memo_Q1_2024.pdf",
+          "publication_date": "2024-02-20",
+          "confidence": 0.95,
+          "finding_type": "established"
+        },
+        {
+          "claim": "Data privacy is classified as a high-priority risk in enterprise AI adoption for 2024",
+          "evidence_excerpt": "Primary risks identified: data privacy (high), model hallucination (medium-high), regulatory non-compliance (medium).",
+          "source_url_or_doc": "ai_risk_assessment_2024.pdf",
+          "publication_date": "2024-01-10",
+          "confidence": 0.95,
+          "finding_type": "established"
+        },
+        {
+          "claim": "Model hallucination poses a medium-high risk to enterprise AI deployments",
+          "evidence_excerpt": "Primary risks identified: data privacy (high), model hallucination (medium-high), regulatory non-compliance (medium).",
+          "source_url_or_doc": "ai_risk_assessment_2024.pdf",
+          "publication_date": "2024-01-10",
+          "confidence": 0.9,
+          "finding_type": "established"
+        },
+        {
+          "claim": "Regulatory non-compliance is identified as a medium-level risk for enterprise AI initiatives",
+          "evidence_excerpt": "Primary risks identified: data privacy (high), model hallucination (medium-high), regulatory non-compliance (medium).",
+          "source_url_or_doc": "ai_risk_assessment_2024.pdf",
+          "publication_date": "2024-01-10",
+          "confidence": 0.9,
+          "finding_type": "established"
+        },
+        {
+          "claim": "RLHF fine-tuning, retrieval-augmented generation, and human-in-the-loop review are recommended mitigation strategies for AI risks",
+          "evidence_excerpt": "Mitigation strategies include RLHF fine-tuning, retrieval-augmented generation, and human-in-the-loop review for high-stakes decisions.",
+          "source_url_or_doc": "ai_risk_assessment_2024.pdf",
+          "publication_date": "2024-01-10",
+          "confidence": 0.95,
+          "finding_type": "established"
+        }
+      ],
+      "metadata": {
+        "elapsed_secs": 9.81,
+        "documents_analysed": 2
+      },
+      "success": true,
+      "error": null
+    }
+  ],
+  "coverage_gaps": [
+    "Web search incomplete for 'Enterprise AI adoption rates and productivity impact in 2024: statistics, investment figures, risks, and strategic recommendations' (timeout): 1 partial results only"
+  ]
+}
