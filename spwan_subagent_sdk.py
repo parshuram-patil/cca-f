@@ -12,6 +12,7 @@ from claude_agent_sdk import (
     AssistantMessage,
     ToolUseBlock,
 )
+from claude_agent_sdk.types import McpStdioServerConfig
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -69,6 +70,14 @@ product_server = create_sdk_mcp_server(
     tools=[get_product_price],   # add as many tools as you need here
 )
 
+# Third-party GitHub MCP server (stdio-based)
+github_server = McpStdioServerConfig(
+    type="stdio",
+    command="npx",
+    args=["-y", "@modelcontextprotocol/server-github"],
+    env={"GITHUB_PERSONAL_ACCESS_TOKEN": os.getenv("GITHUB_TOKEN", "")},
+)
+
 # Tool's fully qualified name = mcp__{server_name}__{tool_name}
 #                             = mcp__products__get_product_price
 
@@ -83,11 +92,14 @@ async def main():
                "Also check XYZ789. Then try product FAKE999.",
 
         options=ClaudeAgentOptions(
-            mcp_servers={"products": product_server},  # ← attach server
-
+            model="claude-haiku-4-5",         # ← explicitly set model - default claude-sonnet-4-5 (for Claude Code 2.x)
+            mcp_servers={
+                "products": product_server,   # ← in-process custom server
+                "github": github_server,      # ← third-party GitHub MCP server
+            },
             allowed_tools=[
-                "mcp__products__get_product_price",    # ← pre-approve: runs without prompt
-                # "mcp__products__*"                   # ← wildcard: approve ALL tools on server
+                "mcp__products__get_product_price",    # ← custom tool
+                "mcp__github__*",                      # ← all GitHub tools
             ],
         ),
     ):
