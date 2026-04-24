@@ -6,7 +6,7 @@ import ast
 import json
 import re
 
-from utils.api import chat, add_user_message, add_assistant_message
+from utils.api import chat, add_user_message, add_assistant_message, text_from_message
 
 
 # ── Syntax validators ─────────────────────────────────────────────────────────
@@ -86,6 +86,7 @@ def grade_by_model(test_case: dict, output: str) -> dict:
     messages: list = []
     add_user_message(messages, eval_prompt)
     add_assistant_message(messages, "```json")
-    eval_text = chat(messages, stop_sequences=["```"])
+    eval_response = chat(messages, stop_sequences=["```"])
+    eval_text = text_from_message(eval_response)
     return json.loads(eval_text)
 

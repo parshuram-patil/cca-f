@@ -4,7 +4,7 @@ Evaluation runner: prompts the model, grades results, aggregates scores.
 
 from statistics import mean
 
-from utils.api import chat, add_user_message, add_assistant_message
+from utils.api import chat, add_user_message, add_assistant_message, text_from_message
 from utils.grader import grade_by_model, grade_syntax
 
 
@@ -24,7 +24,7 @@ def run_prompt(test_case: dict) -> str:
     messages: list = []
     add_user_message(messages, prompt)
     add_assistant_message(messages, "```code")
-    return chat(messages, stop_sequences=["```"])
+    return text_from_message(chat(messages, stop_sequences=["```"]))
 
 
 # ── Single test case ──────────────────────────────────────────────────────────

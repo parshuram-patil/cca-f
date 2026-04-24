@@ -5,7 +5,6 @@ Usage:
     python prompt_eval.py                     # generate dataset + run eval
     python prompt_eval.py --load              # load saved dataset + run eval
 """
-
 import sys
 
 from dotenv import load_dotenv
